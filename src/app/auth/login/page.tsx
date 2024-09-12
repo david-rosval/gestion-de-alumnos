@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -36,37 +37,41 @@ export default function ProfileForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 items-center justify-center h-screen">
-        <h1 className="text-3xl font-semibold">Iniciar sesión</h1>
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Código</FormLabel>
-              <FormControl>
-                <Input placeholder="ej. 20b1234567" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Contraseña</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="ej. untels123" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Ingresar</Button>
-      </form>
-    </Form>
+    <div className="h-screen flex justify-center items-center">
+      <Card className="w-[350px] p-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 items-center justify-center">
+            <h1 className="text-3xl font-semibold mb-5">Iniciar sesión</h1>
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>Código</FormLabel>
+                  <FormControl>
+                    <Input placeholder="ej. 20b1234567" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>Contraseña</FormLabel>
+                  <FormControl>
+                    <Input type="password" placeholder="ej. untels123" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button className="w-full text-lg py-5 mt-5" type="submit">Ingresar</Button>
+          </form>
+        </Form>
+      </Card>
+    </div>
   )
 }
